@@ -1,0 +1,58 @@
+version: "3.9"
+
+services:
+  db:
+    container_name: db
+    build:
+      context: .
+      dockerfile: containers/postgres/Dockerfile
+    # M1チップでも動くように
+    platform: linux/x86_64
+    volumes:
+      - db_data:/var/lib/mysql
+    # 環境変数
+    environment:
+      - MYSQL_ROOT_PASSWORD
+      - MYSQL_DATABASE
+      - MYSQL_USER
+      - MYSQL_PASSWORD
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: pg_isready -U "${POSTGRES_USER:-postgres}" || exit 1
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+  app:
+    container_name: app
+    build:
+      context: .
+      dockerfile: containers/django/Dockerfile
+    volumes:
+      - ./application:/code
+      - ./static:/static
+    expose:
+      - "8000"
+    command: sh -c "/usr/local/bin/entrypoint.sh"
+    stdin_open: true
+    tty: true
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+  web:
+    container_name: web
+    build:
+      context: .
+      dockerfile: containers/nginx/Dockerfile
+    volumes:
+      - ./static:/static
+    ports:
+      - "80:80"
+    depends_on:
+      - app
+volumes:
+  db_data:
+  static:
