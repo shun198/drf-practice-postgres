@@ -8,7 +8,7 @@ env:
   SECRET_KEY: test
   DJANGO_SETTINGS_MODULE: project.settings.dev
   ALLOWED_HOSTS: 127.0.0.1
-  POSTGRES_DB: testdb
+  POSTGRES_DB: test
   POSTGRES_HOST: 127.0.0.1
   POSTGRES_PORT: 5432
   POSTGRES_USER: test
