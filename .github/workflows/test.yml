@@ -43,9 +43,10 @@ jobs:
       - name: Chekcout code
         uses: actions/checkout@v3
       - name: Grant privileges to user
-        run: |
-          export PGPASSWORD=$POSTGRES_PASSWORD
-          psql -h 127.0.0.1 -p 5432 -U $POSTGRES_USER -c "GRANT ALL PRIVILEGES ON *.* TO '$POSTGRES_USER'@'%'; FLUSH PRIVILEGES;"
+        run: psql -h 127.0.0.1 -p 5432 -U $POSTGRES_USER -c "GRANT ALL PRIVILEGES ON DATABASE $POSTGRES_NAME TO $POSTGRES_USER; \l+"
+        # GRANT ALL PRIVILEGES ON DATABASE django-db TO 'django'; \l+
+        env:
+          PGPASSWORD: ${{ env.POSTGRES_PASSWORD }}
       - name: Install poetry
         run: pipx install poetry
       - name: Use cache dependencies
