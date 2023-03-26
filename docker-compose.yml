@@ -13,7 +13,7 @@ services:
       - db_data:/var/lib/postgresql/data
     # 環境変数
     environment:
-      - POSTGRES_NAME
+      - POSTGRES_DB
       - POSTGRES_HOST
       - POSTGRES_USER
       - POSTGRES_PASSWORD
