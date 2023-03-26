@@ -45,7 +45,7 @@ jobs:
       - name: Grant privileges to user
         run: |
           export PGPASSWORD=$POSTGRES_PASSWORD
-          psql -h 127.0.0.1 -p 5432 -U $POSTGRES_USER -d $POSTGRES_NAME -c "GRANT ALL PRIVILEGES ON *.* TO '$POSTGRES_USER'@'%'; FLUSH PRIVILEGES;"
+          psql -h 127.0.0.1 -p 5432 -U $POSTGRES_USER -c "GRANT ALL PRIVILEGES ON *.* TO '$POSTGRES_USER'@'%'; FLUSH PRIVILEGES;"
       - name: Install poetry
         run: pipx install poetry
       - name: Use cache dependencies
