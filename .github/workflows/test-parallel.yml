@@ -8,7 +8,7 @@ env:
   SECRET_KEY: test
   DJANGO_SETTINGS_MODULE: project.settings.dev
   ALLOWED_HOSTS: 127.0.0.1
-  POSTGRES_NAME: test-db
+  POSTGRES_DB: test
   POSTGRES_HOST: 127.0.0.1
   POSTGRES_PORT: 5432
   POSTGRES_USER: test
@@ -34,7 +34,7 @@ jobs:
         ports:
           - 5432:5432
         env:
-          POSTGRES_NAME: ${{ env.POSTGRES_NAME }}
+          POSTGRES_NAME: ${{ env.POSTGRES_DB }}
           POSTGRES_USER: ${{ env.POSTGRES_USER }}
           POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
         options: >-
@@ -45,8 +45,6 @@ jobs:
     steps:
       - name: Chekcout code
         uses: actions/checkout@v3
-      - name: Grant privileges to user
-        run: psql -h 127.0.0.1 -p 5432 -U $POSTGRES_USER -d $POSTGRES_NAME - -c "GRANT ALL PRIVILEGES ON *.* TO '$POSTGRES_USER'@'%'; FLUSH PRIVILEGES;" --$POSTGRES_PASSWORD
       - name: Setup Django
         uses: ./.github/actions/set-up-django
         with:
