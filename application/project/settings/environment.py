@@ -8,7 +8,7 @@ class DjangoSettings(BaseSettings):
 
     SECRET_KEY: str
     ALLOWED_HOSTS: str
-    POSTGRES_NAME: str
+    POSTGRES_DB: str
     POSTGRES_USER: str
     POSTGRES_PASSWORD: str
     POSTGRES_HOST: str = "db"
