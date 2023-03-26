@@ -85,7 +85,7 @@ WSGI_APPLICATION = "project.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.mysql",
+        "ENGINE": "django.db.backends.postgresql",
         # コンテナ内の環境変数をDATABASESのパラメータに反映
         "NAME": django_settings.POSTGRES_NAME,
         "USER": django_settings.POSTGRES_USER,
