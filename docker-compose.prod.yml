@@ -12,7 +12,7 @@ services:
       - db_data:/var/lib/mysql
     # 環境変数
     environment:
-      - POSTGRES_DB
+      - POSTGRES_NAME
       - POSTGRES_USER
       - POSTGRES_PASSWORD
     ports:
