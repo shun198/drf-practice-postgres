@@ -12,10 +12,9 @@ services:
       - db_data:/var/lib/mysql
     # 環境変数
     environment:
-      - MYSQL_ROOT_PASSWORD
-      - MYSQL_DATABASE
-      - MYSQL_USER
-      - MYSQL_PASSWORD
+      - POSTGRES_DATABASE
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
     ports:
       - "5432:5432"
     healthcheck:

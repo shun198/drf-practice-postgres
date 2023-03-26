@@ -8,11 +8,11 @@ class DjangoSettings(BaseSettings):
 
     SECRET_KEY: str
     ALLOWED_HOSTS: str
-    MYSQL_DATABASE: str
-    MYSQL_USER: str
-    MYSQL_PASSWORD: str
-    MYSQL_HOST: str = "db"
-    MYSQL_PORT: int = 3306
+    POSTGRES_NAME: str
+    POSTGRES_USER: str
+    POSTGRES_PASSWORD: str
+    POSTGRES_HOST: str = "db"
+    POSTGRES_PORT: int = 5432
 
 
 class AwsSettings(BaseSettings):
