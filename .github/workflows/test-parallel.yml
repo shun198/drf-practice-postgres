@@ -55,4 +55,3 @@ jobs:
           working-directory: ${{ env.WORKING_DIRECTORY }}
       - name: Run Pytest
         run: poetry run pytest application/tests/${{ matrix.test-path }} -n auto --cov --no-cov-on-fail --suppress-no-test-exit-code
-
