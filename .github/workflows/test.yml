@@ -62,8 +62,8 @@ jobs:
         run: |
           set -o pipefail
           poetry run pytest --junitxml=pytest.xml -x -n auto --cov --no-cov-on-fail --suppress-no-test-exit-code | tee pytest-coverage.txt
-      - name: Pytest coverage comment
-        uses: MishaKav/pytest-coverage-comment@main
-        with:
-          pytest-coverage-path: ${{ env.WORKING_DIRECTORY }}/pytest-coverage.txt
-          junitxml-path: ${{ env.WORKING_DIRECTORY }}/pytest.xml
+      # - name: Pytest coverage comment
+      #   uses: MishaKav/pytest-coverage-comment@main
+      #   with:
+      #     pytest-coverage-path: ${{ env.WORKING_DIRECTORY }}/pytest-coverage.txt
+      #     junitxml-path: ${{ env.WORKING_DIRECTORY }}/pytest.xml
