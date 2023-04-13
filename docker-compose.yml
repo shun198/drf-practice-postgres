@@ -60,6 +60,33 @@ services:
       - AWS_ACCESS_KEY_ID
       - AWS_SECRET_ACCESS_KEY
       - AWS_PROFILE
+  redis:
+    image: redis:alpine
+    container_name: redis
+  celery:
+      build:
+        context: .
+        dockerfile: containers/django/Dockerfile
+      container_name: celery
+      command: celery -A application worker -l info
+      volumes:
+          - ./application:/code
+      env_file:
+          - .env
+      depends_on:
+        - redis
+  celery-beat:
+      build:
+        context: .
+        dockerfile: containers/django/Dockerfile
+      container_name: celery-beat
+      command: celery -A application beat -l info
+      volumes:
+          - ./application:/code
+      env_file:
+          - .env
+      depends_on:
+        - redis
 volumes:
   db_data:
   static:
