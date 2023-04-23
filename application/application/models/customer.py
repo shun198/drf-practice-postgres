@@ -16,8 +16,6 @@ class Customer(models.Model):
         validators=[RegexValidator(r"^[0-9]{11}$", "11桁の数字を入力してください。")],
         blank=True,
     )
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         db_table = "Customer"
