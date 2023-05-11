@@ -11,7 +11,6 @@ env:
   POSTGRES_NAME: test
   POSTGRES_USER: test
   POSTGRES_PASSWORD: test
-  POSTGRES_DB: test
   POSTGRES_HOST: 127.0.0.1
   POSTGRES_PORT: 5432
 
@@ -35,7 +34,6 @@ jobs:
           POSTGRES_NAME: ${{ env.POSTGRES_NAME }}
           POSTGRES_USER: ${{ env.POSTGRES_USER }}
           POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
-          POSTGRES_DB: ${{ env.POSTGRES_DB }}
         options: >-
           --health-cmd "pg_isready"
           --health-interval 10s
