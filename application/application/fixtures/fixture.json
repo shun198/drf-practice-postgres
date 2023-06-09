@@ -62,7 +62,8 @@
             "kana": "オオサカタロウ",
             "name": "大阪太郎",
             "birthday": "1992-01-06",
-            "phone_no": "08011112222"
+            "phone_no": "08011112222",
+            "address": 1
         }
     },
     {
@@ -72,7 +73,8 @@
             "kana": "キョウトジロウ",
             "name": "京都二郎",
             "birthday": "1994-01-06",
-            "phone_no": "08022223333"
+            "phone_no": "08022223333",
+            "address": 2
         }
     },
     {
@@ -82,7 +84,41 @@
             "kana": "ヒョウゴサブロウ",
             "name": "兵庫三郎",
             "birthday": "1995-03-06",
-            "phone_no": "08033334444"
+            "phone_no": "08033334444",
+            "address": 3
+        }
+    },
+    {
+        "model": "application.Address",
+        "pk": 1,
+        "fields": {
+            "prefecture": "京都府",
+            "municipalities": "京都市東山区",
+            "house_no": "清水",
+            "other": "1-294",
+            "post_no": "6050862"
+        }
+    },
+    {
+        "model": "application.Address",
+        "pk": 2,
+        "fields": {
+            "prefecture": "京都府",
+            "municipalities": "京都市東山区",
+            "house_no": "北区金閣寺町1",
+            "other": "",
+            "post_no": "6038361"
+        }
+    },
+    {
+        "model": "application.Address",
+        "pk": 3,
+        "fields": {
+            "prefecture": "京都府",
+            "municipalities": "京都市東山区",
+            "house_no": "左京区銀閣寺町2",
+            "other": "",
+            "post_no": "6068402"
         }
     }
 ]
