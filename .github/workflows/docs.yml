@@ -46,7 +46,7 @@ jobs:
       - name: Upload Documents
         uses: actions/upload-artifact@v3
         with:
-          name: docs
+          name: github-pages
           # 絶対パスを指定
           path: application/docs/
 
@@ -59,7 +59,7 @@ jobs:
       pages: write
       id-token: write
     environment:
-      name: docs
+      name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
