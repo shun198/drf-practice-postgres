@@ -15,5 +15,5 @@ router.register(r"customer", CustomerViewSet, basename="customer")
 
 urlpatterns = [
     path(r"", include(router.urls)),
-    path(r"health_check/", health_check, name="health_check"),
+    path(r"health/", health_check, name="health_check"),
 ]
