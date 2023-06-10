@@ -42,10 +42,8 @@ jobs:
       - name: Create documentation
         run: poetry run pdoc -o docs application/tests/
       - name: Upload Documents
-        # uses: actions/upload-artifact@v3
         uses: actions/upload-pages-artifact@v1
         with:
-          # name: github-pages
           # 絶対パスを指定
           path: application/docs/
 
