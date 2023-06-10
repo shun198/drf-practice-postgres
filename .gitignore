@@ -163,3 +163,4 @@ output
 migrations
 tmp
 docs/
+static/
