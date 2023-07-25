@@ -28,7 +28,7 @@ redis = "^4.3.4"
 schedule = "^1.2.0"
 toml = "^0.10.2"
 
-[tool.poetry.group.dev.dependencies]
+[tool.poetry.group.local.dependencies]
 black = "^22.10.0"
 django-debug-toolbar = "^3.8.1"
 django-extensions = "^3.2.1"
@@ -71,63 +71,63 @@ build-backend = "poetry.core.masonry.api"
 requires = ["poetry-core"]
 
 [tool.pytest.ini_options]
-DJANGO_SETTINGS_MODULE = "project.settings.dev"
+DJANGO_SETTINGS_MODULE = "project.settings.local"
 addopts = "-vv --diff-width=60 -s --durations=0"
 
 # logの設定（開発環境）
-[dev.logging]
+[local.logging]
 version = 1
-[dev.logging.formatters.simple]
+[local.logging.formatters.simple]
 format = "[%(levelname)s] %(name)s %(asctime)s - %(message)s "
-[dev.logging.handlers.consoleHandler]
+[local.logging.handlers.consoleHandler]
 class = "logging.StreamHandler"
 formatter = "simple"
 level = "DEBUG"
 stream = "ext://sys.stdout"
-[dev.logging.handlers.applicationHandler]
+[local.logging.handlers.applicationHandler]
 class = "logging.handlers.TimedRotatingFileHandler"
 filename = "./output/application.log"
 formatter = "simple"
 level = "INFO"
 when = "D"
-[dev.logging.handlers.errorHandler]
+[local.logging.handlers.errorHandler]
 class = "logging.handlers.TimedRotatingFileHandler"
 filename = "./output/emergency.log"
 formatter = "simple"
 level = "ERROR"
 when = "D"
+[local.logging.loggers.console]
+handlers = ["consoleHandler"]
+level = "DEBUG"
+propagate = "no"
+[local.logging.loggers.application]
+handlers = ["consoleHandler", "applicationHandler"]
+level = "DEBUG"
+propagate = "no"
+[local.logging.loggers.emergency]
+handlers = ["consoleHandler", "errorHandler"]
+level = "DEBUG"
+propagate = "no"
+
+# logの設定（dev環境）
+[dev.logging]
+version = 1
+[dev.logging.formatters.simple]
+format = "[%(levelname)s] %(name)s - %(message)s "
+[dev.logging.handlers.consoleHandler]
+class = "logging.StreamHandler"
+formatter = "simple"
+level = "DEBUG"
+stream = "ext://sys.stdout"
 [dev.logging.loggers.console]
 handlers = ["consoleHandler"]
 level = "DEBUG"
 propagate = "no"
 [dev.logging.loggers.application]
-handlers = ["consoleHandler", "applicationHandler"]
+handlers = ["consoleHandler"]
 level = "DEBUG"
 propagate = "no"
 [dev.logging.loggers.emergency]
-handlers = ["consoleHandler", "errorHandler"]
-level = "DEBUG"
-propagate = "no"
-
-# logの設定（stg環境）
-[stg.logging]
-version = 1
-[stg.logging.formatters.simple]
-format = "[%(levelname)s] %(name)s - %(message)s "
-[stg.logging.handlers.consoleHandler]
-class = "logging.StreamHandler"
-formatter = "simple"
-level = "DEBUG"
-stream = "ext://sys.stdout"
-[stg.logging.loggers.console]
-handlers = ["consoleHandler"]
-level = "DEBUG"
-propagate = "no"
-[stg.logging.loggers.application]
-handlers = ["consoleHandler"]
-level = "DEBUG"
-propagate = "no"
-[stg.logging.loggers.emergency]
 handlers = ["consoleHandler"]
 level = "DEBUG"
 propagate = "no"
