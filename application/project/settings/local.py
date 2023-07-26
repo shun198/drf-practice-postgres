@@ -26,7 +26,7 @@ MIDDLEWARE += [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
-ROOT_URLCONF = "project.urls.dev"
+ROOT_URLCONF = "project.urls.local"
 
 # Djangoのメールの設定
 EMAIL_HOST = "mail"

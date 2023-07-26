@@ -14,7 +14,6 @@ services:
     # 環境変数
     environment:
       - POSTGRES_NAME
-      - POSTGRES_HOST
       - POSTGRES_USER
       - POSTGRES_PASSWORD
     ports:
@@ -38,8 +37,8 @@ services:
       # デバッグ用ポート
       - '8080:8080'
     command: sh -c "/usr/local/bin/entrypoint.sh"
-    stdin_open: true
-    tty: true
+    # stdin_open: true
+    # tty: true
     env_file:
       - .env
     depends_on:
