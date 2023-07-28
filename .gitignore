@@ -162,3 +162,5 @@ htmlcov
 output
 migrations
 tmp
+docs/
+static/
