@@ -28,7 +28,7 @@ jobs:
         working-directory: application
     services:
       db:
-        image: postgres:15.2
+        image: postgres:15.5
         ports:
           - 5432:5432
         env:
