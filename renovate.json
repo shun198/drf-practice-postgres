@@ -7,7 +7,14 @@
   "assignees": [
     "shun198"
   ],
+  "reviewers": [
+    "shun198"
+  ],
   "addLabels": [
     "renovate"
+  ],
+  "schedule": [
+    "after 10pm and before 5am every weekday",
+    "every weekend"
   ]
 }
