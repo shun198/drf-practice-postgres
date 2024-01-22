@@ -3,5 +3,8 @@
   "extends": [
     "config:recommended"
   ],
-  "timezone": "Asia/Tokyo"
+  "timezone": "Asia/Tokyo",
+  "assignees": [
+    "shun198"
+  ]
 }
