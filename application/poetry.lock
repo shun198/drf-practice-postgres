@@ -654,18 +654,18 @@ djangorestframework = ">=3.14.0"
 
 [[package]]
 name = "drf-spectacular"
-version = "0.24.2"
+version = "0.27.1"
 description = "Sane and flexible OpenAPI 3 schema generation for Django REST framework"
 optional = false
 python-versions = ">=3.6"
 files = [
-    {file = "drf-spectacular-0.24.2.tar.gz", hash = "sha256:be32417594080a52f996afd83fd47ea9c2b83cbf13f6d3fbf3de809a0dfa7ead"},
-    {file = "drf_spectacular-0.24.2-py3-none-any.whl", hash = "sha256:b276e6f7bda6dfb911e742dab87c6e97bc67da2dafe82d6fd8df7cec6c8b03ec"},
+    {file = "drf-spectacular-0.27.1.tar.gz", hash = "sha256:452e0cff3c12ee057b897508a077562967b9e62717992eeec10e62dbbc7b5a33"},
+    {file = "drf_spectacular-0.27.1-py3-none-any.whl", hash = "sha256:0a4cada4b7136a0bf17233476c066c511a048bc6a485ae2140326ac7ba4003b2"},
 ]
 
 [package.dependencies]
 Django = ">=2.2"
-djangorestframework = ">=3.10"
+djangorestframework = ">=3.10.3"
 inflection = ">=0.3.1"
 jsonschema = ">=2.6.0"
 PyYAML = ">=5.1"
@@ -765,17 +765,17 @@ files = [
 
 [[package]]
 name = "injector"
-version = "0.20.1"
+version = "0.21.0"
 description = "Injector - Python dependency injection framework, inspired by Guice"
 optional = false
 python-versions = "*"
 files = [
-    {file = "injector-0.20.1-py2.py3-none-any.whl", hash = "sha256:f8fc5994176a8cf6b0455a8d1558c588733474ef17795553464e7e9d2f94eaf5"},
-    {file = "injector-0.20.1.tar.gz", hash = "sha256:8661b49a2f8309ce61e3a6a82b7acb5e225c4bde8e17d1610c893a670dff223a"},
+    {file = "injector-0.21.0-py2.py3-none-any.whl", hash = "sha256:3942c5e4c501d390d5ad1b8d7d486ef93b844934afeeb17211acb6c4ca29eeb4"},
+    {file = "injector-0.21.0.tar.gz", hash = "sha256:919eb6b9f96f40bf98fda34c79762b217bd1544d9adc35805ff2948e92356c9c"},
 ]
 
 [package.extras]
-dev = ["black", "check-manifest", "dataclasses", "mypy", "pytest", "pytest-cov (>=2.5.1)"]
+dev = ["black (==23.3.0)", "build (==0.10.0)", "check-manifest (==0.49)", "click (==8.1.3)", "coverage (==7.2.7)", "exceptiongroup (==1.1.1)", "iniconfig (==2.0.0)", "mypy (==1.4.1)", "mypy-extensions (==1.0.0)", "packaging (==23.1)", "pathspec (==0.11.1)", "platformdirs (==3.8.0)", "pluggy (==1.2.0)", "pyproject-hooks (==1.0.0)", "pytest (==7.4.0)", "pytest-cov (==4.1.0)", "tomli (==2.0.1)", "typing-extensions (==4.7.0)"]
 
 [[package]]
 name = "isort"
@@ -1921,4 +1921,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "274f6d5ae640f9ed693b41aac91d2de15fba3f8963058481c3c8ee5820ab00de"
+content-hash = "0cbb11fd2e9f4ada12abdeffa8a7b7907e2165956fcabd4ee0b322c7b080c859"
