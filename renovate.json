@@ -6,5 +6,8 @@
   "timezone": "Asia/Tokyo",
   "assignees": [
     "shun198"
+  ],
+  "addLabels": [
+    "renovate"
   ]
 }
