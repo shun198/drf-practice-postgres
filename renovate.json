@@ -23,7 +23,7 @@
   "packageRules": [
     {
       "matchDepTypes": [
-        "tool.poetry.group.dev.dependencies"
+        "dev-dependencies"
       ],
       "matchUpdateTypes": [
         "minor",
