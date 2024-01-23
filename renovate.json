@@ -16,5 +16,25 @@
   "schedule": [
     "after 10pm and before 5am every weekday",
     "every weekend"
+  ],
+  "lockFileMaintenance": {
+    "enabled": true
+  },
+  "packageRules": [
+    {
+      "matchDepTypes": [
+        "tool.poetry.group.dev.dependencies"
+      ],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "automerge": true
+    }
+  ],
+  "ignoreDeps": [
+    "python",
+    "postgres",
+    "nginx"
   ]
 }
