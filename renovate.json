@@ -28,7 +28,8 @@
       "matchUpdateTypes": [
         "minor",
         "patch"
-      ]
+      ],
+      "automerge": true
     }
   ],
   "ignoreDeps": [
