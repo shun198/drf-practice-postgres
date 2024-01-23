@@ -23,7 +23,7 @@
   "packageRules": [
     {
       "matchDepTypes": [
-        "dev-dependencies"
+        "dev.dependencies"
       ],
       "matchUpdateTypes": [
         "minor",
