@@ -24,6 +24,7 @@ class AwsSettings(BaseSettings):
     AWS_STORAGE_BUCKET_NAME: str = "localstack"
     DEFAULT_FROM_EMAIL: str = "django@example.com"
     AWS_PROFILE: str = "localstack"
+    LAMBDA_TOKEN: str = "test"
 
 
 django_settings = DjangoSettings()

@@ -20,7 +20,7 @@ s3 = boto3.client(
 def register_csv(id, csv_name):
     lambda_token = os.environ["LAMBDA_TOKEN"]
 
-    url = f"http://app:8000/api/admin/customers/register_csv"
+    url = f"http://app:8000/api/register_customer/"
     data = {"token": lambda_token, "id": id, "csv_name": csv_name}
     headers = {
         "Content-Type": "application/json",
