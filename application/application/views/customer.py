@@ -7,7 +7,7 @@ from rest_framework.viewsets import ModelViewSet
 
 from application.filters import CustomerFilter
 from application.models import Customer
-from application.serializers.customer import CustomerSerializer
+from application.serializers.customer import CustomerSerializer, UploadCSVSerializer
 from project.settings.environment import aws_settings
 
 
@@ -18,8 +18,19 @@ class CustomerViewSet(ModelViewSet):
     filter_backends = (DjangoFilterBackend,)
     filterset_class = CustomerFilter
 
+    def get_serializer_class(self):
+        match self.action:
+            case "upload_csv":
+                return UploadCSVSerializer
+            case "register_customer":
+                return None
+            case _:
+                return CustomerSerializer
+
     @action(detail=False, methods=["post"])
     def upload_csv(self, request):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
         return JsonResponse(
             {
                 "msg": "CSVファイルのアップロードに成功しました",

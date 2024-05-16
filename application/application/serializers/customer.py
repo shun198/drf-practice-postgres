@@ -25,3 +25,7 @@ class AddressSerializer(serializers.ModelSerializer):
     class Meta:
         model = Address
         fields = "__all__"
+
+
+class UploadCSVSerializer(serializers.Serializer):
+    file = serializers.FileField()
