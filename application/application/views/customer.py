@@ -11,7 +11,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.viewsets import ModelViewSet
 
 from application.filters import CustomerFilter
-from application.models import Customer, UploadCSVHistory
+from application.models import Customer
 from application.serializers.customer import (
     CustomerSerializer,
     UploadCSVSerializer,
@@ -85,10 +85,7 @@ class CustomerViewSet(ModelViewSet):
                 data={"msg": ""},
                 status=status.HTTP_400_BAD_REQUEST,
             )
-        upload_csv_history = UploadCSVHistory.objects.get(
-            csv=request.data.get("csv"),
-        )
-        csv = upload_csv_history.csv
+        csv = request.data.get("csv")
         with csv.open():
             encoding = chardet.detect(csv.read())
             if encoding["encoding"] != "utf-8":
