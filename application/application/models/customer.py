@@ -3,6 +3,7 @@ import uuid
 from django.core.validators import RegexValidator
 from django.db import models
 
+from application.models.user import User
 from application.utils.customer_storage import CustomerStorage
 
 
@@ -79,7 +80,7 @@ class UploadCSVHistory(models.Model):
         db_comment="お客様のCSV履歴ID",
     )
     csv = models.FileField(
-        upload_to="customer_photo",
+        upload_to="",
         storage=CustomerStorage(),
         db_comment="写真",
     )
@@ -88,7 +89,7 @@ class UploadCSVHistory(models.Model):
         db_comment="作成日時",
     )
     created_by = models.ForeignKey(
-        "self",
+        User,
         null=True,
         on_delete=models.SET_NULL,
         related_name="%(class)s_created_by",

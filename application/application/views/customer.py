@@ -1,4 +1,6 @@
 import json
+
+import chardet
 from botocore.exceptions import ClientError
 from django.conf import settings
 from django.http import JsonResponse
@@ -9,10 +11,11 @@ from rest_framework.permissions import AllowAny
 from rest_framework.viewsets import ModelViewSet
 
 from application.filters import CustomerFilter
-from application.models import Customer
+from application.models import Customer, UploadCSVHistory
 from application.serializers.customer import (
     CustomerSerializer,
     UploadCSVSerializer,
+    UploadCustomerHistorySerializer,
 )
 from project.settings.environment import aws_settings
 
@@ -35,6 +38,11 @@ class CustomerViewSet(ModelViewSet):
     @action(detail=False, methods=["post"])
     def upload_csv(self, request):
         csv = request.FILES["file"]
+        if not csv.name.endswith(".csv"):
+            return JsonResponse(
+                {"msg": "csvファイルをアップロードしてください"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
         try:
             csv.read().decode("utf-8-sig")
         except BaseException:
@@ -44,8 +52,11 @@ class CustomerViewSet(ModelViewSet):
                 },
                 status=status.HTTP_400_BAD_REQUEST,
             )
+        serializer = UploadCustomerHistorySerializer(data={"csv": csv})
+        serializer.is_valid(raise_exception=True)
+        serializer.save(created_by=request.user)
         msg = {
-            "file": "file_name",
+            "csv": csv.name,
         }
         try:
             settings.BOTO3_SQS_CLIENT.send_message(
@@ -74,3 +85,21 @@ class CustomerViewSet(ModelViewSet):
                 data={"msg": ""},
                 status=status.HTTP_400_BAD_REQUEST,
             )
+        upload_csv_history = UploadCSVHistory.objects.get(
+            csv=request.data.get("csv"),
+        )
+        csv = upload_csv_history.csv
+        with csv.open():
+            encoding = chardet.detect(csv.read())
+            if encoding["encoding"] != "utf-8":
+                raise Exception(
+                    "utf-8にエンコードされたCSVファイルを指定してください"
+                )
+            csv.seek(0)
+            data = csv.read().decode()
+        return JsonResponse(
+            {
+                "msg": "お客様情報の登録が完了しました",
+            },
+            status=status.HTTP_201_CREATED,
+        )

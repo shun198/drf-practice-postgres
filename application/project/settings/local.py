@@ -45,11 +45,23 @@ EMAIL_USE_TLS = False
 # DI設定
 injector.binder.install(LocalModule())
 
+AWS_ACCESS_KEY_ID = "localstack"
+AWS_SECRET_ACCESS_KEY = "localstack"
+AWS_S3_ENDPOINT_URL = aws_settings.AWS_S3_ENDPOINT
+
+BOTO3_CLIENT_S3 = boto3.client(
+    "s3",
+    aws_access_key_id="",
+    aws_secret_access_key="",
+    endpoint_url=AWS_S3_ENDPOINT_URL,
+    region_name=aws_settings.AWS_DEFAULT_REGION_NAME,
+)
+
 BOTO3_SQS_CLIENT = boto3.client(
     "sqs",
     endpoint_url=aws_settings.ENDPOINT_URL,
-    aws_access_key_id="localstack",
-    aws_secret_access_key="localstack",
+    aws_access_key_id="",
+    aws_secret_access_key="",
     region_name=aws_settings.AWS_DEFAULT_REGION_NAME,
 )
 

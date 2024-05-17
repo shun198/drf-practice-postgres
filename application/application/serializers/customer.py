@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from application.models import Address, Customer
+from application.models import Address, Customer, UploadCSVHistory
 
 
 class CustomerSerializer(serializers.ModelSerializer):
@@ -29,3 +29,9 @@ class AddressSerializer(serializers.ModelSerializer):
 
 class UploadCSVSerializer(serializers.Serializer):
     file = serializers.FileField()
+
+
+class UploadCustomerHistorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UploadCSVHistory
+        fields = "__all__"

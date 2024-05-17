@@ -21,6 +21,7 @@ class AwsSettings(BaseSettings):
     ENDPOINT_URL: str = "http://localstack:4566"
     AWS_DEFAULT_REGION_NAME: str = "ap-northeast-1"
     AWS_SES_REGION_ENDPOINT: str = "email.ap-northeast-1.amazonaws.com"
+    AWS_S3_ENDPOINT: str = "http://localstack:4566"
     AWS_STORAGE_BUCKET_NAME: str = "localstack"
     DEFAULT_FROM_EMAIL: str = "django@example.com"
     AWS_SQS_URL: str = "http://sqs.ap-northeast-1.localhost.localstack.cloud:4566/000000000000/queue01.fifo"

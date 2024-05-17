@@ -61,7 +61,7 @@ services:
       - AWS_S3_ENDPOINT_URL=http://localstack:4566
       - AWS_ACCESS_KEY_ID=localstack
       - AWS_SECRET_ACCESS_KEY=localstack
-      - AWS_STORAGE_BUCKET_NAME=test-bucket
+      - AWS_STORAGE_BUCKET_NAME=localstack
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./containers/localstack/:/etc/localstack/init/ready.d/
