@@ -1,8 +1,12 @@
 """LOCAL環境用の設定"""
+
 from logging.config import dictConfig
+
+import boto3
 
 from application.injectors import LocalModule, injector
 from application.utils.logs import ConfFile
+from project.settings.environment import aws_settings
 
 from .base import *
 
@@ -40,6 +44,14 @@ EMAIL_USE_TLS = False
 
 # DI設定
 injector.binder.install(LocalModule())
+
+BOTO3_SQS_CLIENT = boto3.client(
+    "sqs",
+    endpoint_url=aws_settings.ENDPOINT_URL,
+    aws_access_key_id="localstack",
+    aws_secret_access_key="localstack",
+    region_name=aws_settings.AWS_DEFAULT_REGION_NAME,
+)
 
 # ログ設定
 output_path = Path("output")

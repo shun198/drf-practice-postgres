@@ -69,6 +69,37 @@ class CustomerPhoto(models.Model):
         db_table_comment = "お客様の画像"
 
 
+class UploadCSVHistory(models.Model):
+    """お客様の画像"""
+
+    id = models.UUIDField(
+        primary_key=True,
+        default=uuid.uuid4,
+        editable=False,
+        db_comment="お客様のCSV履歴ID",
+    )
+    csv = models.FileField(
+        upload_to="customer_photo",
+        storage=CustomerStorage(),
+        db_comment="写真",
+    )
+    created_at = models.DateTimeField(
+        auto_now_add=True,
+        db_comment="作成日時",
+    )
+    created_by = models.ForeignKey(
+        "self",
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name="%(class)s_created_by",
+        db_comment="作成者",
+    )
+
+    class Meta:
+        db_table = "UploadCSVHistory"
+        db_table_comment = "CSVアップロード履歴"
+
+
 class Address(models.Model):
     """住所"""
 

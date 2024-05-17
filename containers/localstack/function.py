@@ -17,11 +17,11 @@ s3 = boto3.client(
 )
 
 
-def register_csv(id, csv_name):
+def register_csv(csv):
     lambda_token = os.environ["LAMBDA_TOKEN"]
 
     url = f"http://app:8000/api/register_customer/"
-    data = {"token": lambda_token, "id": id, "csv_name": csv_name}
+    data = {"token": lambda_token, "csv": csv}
     headers = {
         "Content-Type": "application/json",
     }
@@ -45,13 +45,13 @@ def lambda_handler(event, context):
     bucket = os.environ["AWS_STORAGE_BUCKET_NAME"]
     body = json.loads(event["Records"][0]["body"])
     print(f"body:{body}")
-    zip_name = body["file"]
+    csv_file = body["file"]
 
     try:
-        obj = s3.get_object(Bucket=bucket, Key=zip_name)
-        z = zipfile.ZipFile(BytesIO(obj["Body"].read()))
+        csv = s3.get_object(Bucket=bucket, Key=csv_file)
+        register_csv(csv=csv)
     except Exception as e:
         print(str(e))
     finally:
-        s3.delete_object(Bucket=bucket, Key=zip_name)
+        s3.delete_object(Bucket=bucket, Key=csv)
         return {}

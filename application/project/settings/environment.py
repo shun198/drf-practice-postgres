@@ -23,7 +23,8 @@ class AwsSettings(BaseSettings):
     AWS_SES_REGION_ENDPOINT: str = "email.ap-northeast-1.amazonaws.com"
     AWS_STORAGE_BUCKET_NAME: str = "localstack"
     DEFAULT_FROM_EMAIL: str = "django@example.com"
-    AWS_PROFILE: str = "localstack"
+    AWS_SQS_URL: str = "http://sqs.ap-northeast-1.localhost.localstack.cloud:4566/000000000000/queue01.fifo"
+    AWS_SQS_MESSAGE_GROUP: str = "localstack"
     LAMBDA_TOKEN: str = "test"
 
 
