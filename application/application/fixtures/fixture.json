@@ -120,5 +120,131 @@
             "other": "",
             "post_no": "6068402"
         }
+    },
+    {
+        "model": "application.Author",
+        "pk": 1,
+        "fields": {
+            "name": "J.K. Rowling",
+            "created_at": "2022-01-01T00:00:00.000Z",
+            "created_by": 1
+        }
+    },
+    {
+        "model": "application.Author",
+        "pk": 2,
+        "fields": {
+            "name": "George R.R. Martin",
+            "created_at": "2022-02-01T00:00:00.000Z",
+            "created_by": 2
+        }
+    },
+    {
+        "model": "application.Author",
+        "pk": 3,
+        "fields": {
+            "name": "Agatha Christie",
+            "created_at": "2022-03-01T00:00:00.000Z",
+            "created_by": 3
+        }
+    },
+    {
+        "model": "application.Book",
+        "pk": 1,
+        "fields": {
+            "title": "Harry Potter and the Philosopher's Stone",
+            "author": 1,
+            "publication_date": "1997-06-26",
+            "created_at": "2022-01-01T00:00:00.000Z",
+            "created_by": 1
+        }
+    },
+    {
+        "model": "application.Book",
+        "pk": 2,
+        "fields": {
+            "title": "Harry Potter and the Chamber of Secrets",
+            "author": 1,
+            "publication_date": "1998-07-02",
+            "created_at": "2022-01-01T00:00:00.000Z",
+            "created_by": 1
+        }
+    },
+    {
+        "model": "application.Book",
+        "pk": 3,
+        "fields": {
+            "title": "Harry Potter and the Prisoner of Azkaban",
+            "author": 1,
+            "publication_date": "1999-07-08",
+            "created_at": "2022-01-01T00:00:00.000Z",
+            "created_by": 1
+        }
+    },
+    {
+        "model": "application.Book",
+        "pk": 4,
+        "fields": {
+            "title": "A Game of Thrones",
+            "author": 2,
+            "publication_date": "1996-08-06",
+            "created_at": "2022-02-01T00:00:00.000Z",
+            "created_by": 2
+        }
+    },
+    {
+        "model": "application.Book",
+        "pk": 5,
+        "fields": {
+            "title": "A Clash of Kings",
+            "author": 2,
+            "publication_date": "1998-11-16",
+            "created_at": "2022-02-01T00:00:00.000Z",
+            "created_by": 2
+        }
+    },
+    {
+        "model": "application.Book",
+        "pk": 6,
+        "fields": {
+            "title": "A Storm of Swords",
+            "author": 2,
+            "publication_date": "2000-08-08",
+            "created_at": "2022-02-01T00:00:00.000Z",
+            "created_by": 2
+        }
+    },
+    {
+        "model": "application.Book",
+        "pk": 7,
+        "fields": {
+            "title": "Murder on the Orient Express",
+            "author": 3,
+            "publication_date": "1934-01-01",
+            "created_at": "2022-03-01T00:00:00.000Z",
+            "created_by": 3
+        }
+    },
+    {
+        "model": "application.Book",
+        "pk": 8,
+        "fields": {
+            "title": "The ABC Murders",
+            "author": 3,
+            "publication_date": "1936-01-06",
+            "created_at": "2022-03-01T00:00:00.000Z",
+            "created_by": 3
+        }
+    },
+    {
+        "model": "application.Book",
+        "pk": 9,
+        "fields": {
+            "title": "Death on the Nile",
+            "author": 3,
+            "publication_date": "1937-11-01",
+            "created_at": "2022-03-01T00:00:00.000Z",
+            "created_by": 3
+        }
     }
 ]

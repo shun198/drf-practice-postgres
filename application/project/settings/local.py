@@ -60,8 +60,8 @@ BOTO3_CLIENT_S3 = boto3.client(
 BOTO3_SQS_CLIENT = boto3.client(
     "sqs",
     endpoint_url=aws_settings.ENDPOINT_URL,
-    aws_access_key_id="",
-    aws_secret_access_key="",
+    aws_access_key_id="localstack",
+    aws_secret_access_key="localstack",
     region_name=aws_settings.AWS_DEFAULT_REGION_NAME,
 )
 
