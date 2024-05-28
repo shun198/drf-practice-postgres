@@ -61,7 +61,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           # 絶対パスを指定
-          path: allure-history/last-history
+          path: allure-history
 
   # Deploy the artifact to GitHub pages.
   # This is a separate job so that only actions/deploy-pages has the necessary permissions.

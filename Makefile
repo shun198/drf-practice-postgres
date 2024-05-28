@@ -56,7 +56,7 @@ make_project:
 make_report:
 	curl -X POST "http://127.0.0.1:5050/allure-docker-service/projects" -H  "accept: */*" -H  "Content-Type: application/json" -d "{\"id\":\"$(PROJECT)\"}"
 	-@ $(RUN_PYTEST) --alluredir=allure-results
-	sh send_results.sh
+	sh application/send_results.sh
 	echo "Generating test report. This may take a while..."
 	curl -X GET "http://127.0.0.1:5050/allure-docker-service/generate-report?project_id=$(PROJECT)" -H  "accept: */*"
 	echo "Successfully generated test report. Redirecting to allure server."
