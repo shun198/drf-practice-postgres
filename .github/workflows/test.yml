@@ -25,7 +25,7 @@ jobs:
     runs-on: ubuntu-22.04
     defaults:
       run:
-        working-directory: application
+        working-directory: ${{ env.WORKING_DIRECTORY }}
     services:
       db:
         image: postgres:15.2
@@ -48,7 +48,7 @@ jobs:
       - name: Use cache dependencies
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version-file: ${{ env.WORKING_DIRECTORY }}/pyproject.toml
           cache: 'poetry'
       - name: Install Packages
         run: poetry install
@@ -68,7 +68,7 @@ jobs:
       - name: Build test report
         uses: simple-elf/allure-report-action@v1.7
         with:
-          allure_results: application/allure-results
+          allure_results: ${{ env.WORKING_DIRECTORY }}/allure-results
       - name: Upload Documents
         uses: actions/upload-pages-artifact@v3
         with:
