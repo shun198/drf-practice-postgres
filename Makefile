@@ -46,6 +46,13 @@ test-cov:
 docs:
 	$(RUN_POETRY) pdoc application/tests --html -o $(DOCS) --force
 
+make_project:
+	curl -X 'POST' \
+	'http://127.0.0.1:5050/allure-docker-service/projects' \
+	-H 'accept: */*' \
+	-H 'Content-Type: application/json' \
+	-d '{"id": "$(PROJECT)"}'
+
 make_report:
 	curl -X POST "http://127.0.0.1:5050/allure-docker-service/projects" -H  "accept: */*" -H  "Content-Type: application/json" -d "{\"id\":\"$(PROJECT)\"}"
 	-@ $(RUN_PYTEST) --alluredir=allure-results

@@ -164,3 +164,6 @@ migrations
 tmp
 docs/
 static/
+.DS_Store
+allure-reports
+allure-results
