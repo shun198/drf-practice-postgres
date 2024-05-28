@@ -65,3 +65,12 @@ jobs:
         with:
           pytest-coverage-path: ${{ env.WORKING_DIRECTORY }}/pytest-coverage.txt
           junitxml-path: ${{ env.WORKING_DIRECTORY }}/pytest.xml
+      - name: Build test report
+        uses: simple-elf/allure-report-action@v1.7
+        with:
+          allure_results: application/allure-results
+      - name: Upload Documents
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # 絶対パスを指定
+          path: allure-history

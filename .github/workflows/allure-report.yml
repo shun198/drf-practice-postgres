@@ -1,72 +1,13 @@
 name: Upload Allure Report to GitHub Pages
 
-on: workflow_dispatch
-
-env:
-  WORKING_DIRECTORY: application
-  SECRET_KEY: test
-  DJANGO_SETTINGS_MODULE: project.settings.local
-  ALLOWED_HOSTS: 127.0.0.1
-  POSTGRES_NAME: test
-  POSTGRES_USER: test
-  POSTGRES_PASSWORD: test
-  POSTGRES_HOST: 127.0.0.1
-  POSTGRES_PORT: 5432
-  TRUSTED_ORIGINS: http://localhost
+on:
+  push:
+    branches:
+      - develop
 
 jobs:
-  create-report:
-    name: Create Allure Report
-    runs-on: ubuntu-22.04
-    defaults:
-      run:
-        working-directory: ${{ env.WORKING_DIRECTORY }}
-    services:
-      db:
-        image: postgres:16.2
-        ports:
-          - 5432:5432
-        env:
-          POSTGRES_NAME: ${{ env.POSTGRES_NAME }}
-          POSTGRES_USER: ${{ env.POSTGRES_USER }}
-          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
-        options: >-
-          --health-cmd "pg_isready"
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Install poetry
-        run: pipx install poetry
-      - uses: actions/setup-python@v5
-        with:
-          # pyproject.tomlからPythonのversionを指定(絶対パス)
-          python-version-file: "${{ env.WORKING_DIRECTORY }}/pyproject.toml"
-          cache: 'poetry'
-      - run: poetry install
-      - name: Run migration
-        run: |
-          poetry run python manage.py makemigrations
-          poetry run python manage.py migrate
-      - name: Run Pytest
-        run: poetry run pytest --alluredir=allure-results
-      - name: Build test report
-        uses: simple-elf/allure-report-action@v1.7
-        if: always()
-        with:
-          allure_results: application/allure-results
-      - name: Upload Documents
-        uses: actions/upload-pages-artifact@v3
-        with:
-          # 絶対パスを指定
-          path: allure-history
-
-  # Deploy the artifact to GitHub pages.
-  # This is a separate job so that only actions/deploy-pages has the necessary permissions.
   deploy:
-    needs: create-report
+    name: Upload To GitHub Pages
     runs-on: ubuntu-latest
     permissions:
       pages: write
