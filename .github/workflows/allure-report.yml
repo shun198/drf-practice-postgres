@@ -19,6 +19,7 @@ jobs:
       - name: Download Artifact
         uses: dawidd6/action-download-artifact@v3
         with:
+          name: github-pages
           workflow: test.yml
       - id: deployment
         uses: actions/deploy-pages@v4
