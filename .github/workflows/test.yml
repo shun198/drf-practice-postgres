@@ -43,19 +43,10 @@ jobs:
     steps:
       - name: Chekcout code
         uses: actions/checkout@v4
-      - name: Install poetry
-        run: pipx install poetry
-      - name: Use cache dependencies
-        uses: actions/setup-python@v5
+      - name: Setup Django
+        uses: ./.github/actions/set-up-django
         with:
-          python-version-file: ${{ env.WORKING_DIRECTORY }}/pyproject.toml
-          cache: 'poetry'
-      - name: Install Packages
-        run: poetry install
-      - name: Run migration
-        run: |
-          poetry run python manage.py makemigrations
-          poetry run python manage.py migrate
+          working-directory: ${{ env.WORKING_DIRECTORY }}
       - name: Run Pytest
         run: |
           set -o pipefail

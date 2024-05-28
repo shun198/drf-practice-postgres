@@ -19,7 +19,7 @@ runs:
     - name: Use cache dependencies
       uses: actions/setup-python@v5
       with:
-        python-version: '3.11'
+        python-version: ${{ env.WORKING_DIRECTORY }}/pyproject.toml
         cache: 'poetry'
     - name: Install Packages
       run: poetry install
