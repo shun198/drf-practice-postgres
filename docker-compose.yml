@@ -51,7 +51,7 @@ services:
       - "1025:1025"
   localstack:
     container_name: localstack
-    image: localstack/localstack:3.0.2
+    image: localstack/localstack:3.8.1
     ports:
       - "4566:4566"
     environment:
