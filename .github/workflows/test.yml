@@ -57,7 +57,7 @@ jobs:
           pytest-coverage-path: ${{ env.WORKING_DIRECTORY }}/pytest-coverage.txt
           junitxml-path: ${{ env.WORKING_DIRECTORY }}/pytest.xml
       - name: Build test report
-        uses: simple-elf/allure-report-action@v1.7
+        uses: simple-elf/allure-report-action@v1.11
         with:
           allure_results: ${{ env.WORKING_DIRECTORY }}/allure-results
       - name: Upload Documents
