@@ -22,7 +22,7 @@ runs:
         python-version-file: ${{ inputs.working-directory }}/pyproject.toml
         cache: 'poetry'
     - name: Install Packages
-      run: poetry install
+      run: poetry install --no-root
       shell: bash
       working-directory: ${{ inputs.working-directory }}
     - name: Execute Migration
