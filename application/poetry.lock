@@ -701,18 +701,18 @@ django = ">=3.0"
 
 [[package]]
 name = "drf-nested-routers"
-version = "0.93.5"
+version = "0.95.0"
 description = "Nested resources for the Django Rest Framework"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "drf-nested-routers-0.93.5.tar.gz", hash = "sha256:1407565abc7bada37c162c7e11bf214ae71625a17fdec6d9a47a17f4a3627d32"},
-    {file = "drf_nested_routers-0.93.5-py2.py3-none-any.whl", hash = "sha256:9a6813554020134a02e62f8c2934b2047717f7da06f8b801752c521e43735c63"},
+    {file = "drf_nested_routers-0.95.0-py2.py3-none-any.whl", hash = "sha256:dd489c33d667aaa81383ffaa8c74781d2b353d8f0795716ae37fc59ee297b7c4"},
+    {file = "drf_nested_routers-0.95.0.tar.gz", hash = "sha256:815978f802e578fd7035c74040c104909cbe97615de89a275d77e928f4029891"},
 ]
 
 [package.dependencies]
-Django = ">=3.2"
-djangorestframework = ">=3.14.0"
+Django = ">=4.2"
+djangorestframework = ">=3.15.0"
 
 [[package]]
 name = "drf-spectacular"
@@ -1973,4 +1973,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "2d278f7ea01b809d1dee6f837d3610ec213209c2518e65cf0c31d9560057b5da"
+content-hash = "88379648e1fd3f45bc3dbf35247e58d57ba1d3982e35314fbb24edb18715dc3f"
