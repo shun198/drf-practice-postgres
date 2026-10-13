@@ -630,23 +630,22 @@ Django = ">=3.2"
 
 [[package]]
 name = "django-ses"
-version = "3.6.0"
+version = "4.5.0"
 description = "A Django email backend for Amazon's Simple Email Service (SES)"
 optional = false
 python-versions = "<4.0,>=3.8"
 files = [
-    {file = "django_ses-3.6.0-py3-none-any.whl", hash = "sha256:f3f69b97444fdbda41946c7349c63e1a0ea8284d9e9acd6f4b5cb3dba5030829"},
-    {file = "django_ses-3.6.0.tar.gz", hash = "sha256:ea08bea9e1aab71f9fbf43b30733a27eff76cea3797b7ebeab9f6bc5d3df6b37"},
+    {file = "django_ses-4.5.0-py3-none-any.whl", hash = "sha256:fa77d8de0557105f4954cb3b81baf71122aecc957d84f9beb9f3734af34e19be"},
+    {file = "django_ses-4.5.0.tar.gz", hash = "sha256:8675749f23b7bea6009c15189101ae1716e46365632bb933bb52fb6db174878d"},
 ]
 
 [package.dependencies]
 boto3 = ">=1.0.0"
-django = ">=2.2"
-pytz = ">=2016.10"
+django = ">=3.2"
 
 [package.extras]
-bounce = ["cryptography (>=36.0.2)", "requests (>=2.27.1)"]
-events = ["cryptography (>=36.0.2)", "requests (>=2.27.1)"]
+bounce = ["cryptography (>=36.0.2)", "requests (>=2.32.1)"]
+events = ["cryptography (>=36.0.2)", "requests (>=2.32.1)"]
 
 [[package]]
 name = "django-storages"
@@ -1601,17 +1600,6 @@ files = [
 six = ">=1.5"
 
 [[package]]
-name = "pytz"
-version = "2024.1"
-description = "World timezone definitions, modern and historical"
-optional = false
-python-versions = "*"
-files = [
-    {file = "pytz-2024.1-py2.py3-none-any.whl", hash = "sha256:328171f4e3623139da4983451950b28e95ac706e13f3f2630a879749e7a8b319"},
-    {file = "pytz-2024.1.tar.gz", hash = "sha256:2a29735ea9c18baf14b448846bde5a48030ed267578472d8955cd0e7443a9812"},
-]
-
-[[package]]
 name = "pyyaml"
 version = "6.0.1"
 description = "YAML parser and emitter for Python"
@@ -1973,4 +1961,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "2d278f7ea01b809d1dee6f837d3610ec213209c2518e65cf0c31d9560057b5da"
+content-hash = "003c5cb0b121f84a5f404beb0abf7483391697c95b83ccec2e92c48599a2c2e3"
